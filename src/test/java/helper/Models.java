@@ -39,6 +39,29 @@ public class Models {
     }
 
    // public static Response validateStatusCode(String endpoint){
+   public static Response deleteUser(String endpoint, String user_id) {
+       setupHeaders();
+       String finalEndpoint = endpoint + "/" + user_id;
+       return request.when().delete(finalEndpoint);
+   }
 
+    public static Response updateUser(String endpoint, String user_id) {
+        setupHeaders();
+
+        String name= "Nathan Stevenson";
+        String gender= "male";
+        String email =  generateRandomEmail();
+        String status = "active";
+
+        JSONObject payload = new JSONObject();
+        payload.put("name", name);
+        payload.put("gender", gender);
+        payload.put("email", email);
+        payload.put("status", status);
+
+
+        String finalEndpoint = endpoint + "/" + user_id;
+        return request.body(payload.toString()).when().patch(finalEndpoint);
+    }
 
 }

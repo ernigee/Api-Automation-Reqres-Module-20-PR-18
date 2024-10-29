@@ -14,7 +14,7 @@ import static org.assertj.core.api.Assertions.*;
 
 public class ApiPage {
 
-    String setURL;
+    String setURL, global_user_id = null;;
     Response res;
 
     public void prepareURL(String url){
@@ -102,5 +102,16 @@ public class ApiPage {
 
         System.out.println(res.getBody().asString());
     }
+    
+    public void hitDeleteUser (){
+        res = deleteUser(setURL, global_user_id);
+    }
 
+    public void hitUpdateUser (){
+        res = updateUser(setURL, global_user_id);
+    }
+
+    public void validationResponseBodyUpdateUser(){
+        System.out.println(res.getBody().asString());
+    }
 }
