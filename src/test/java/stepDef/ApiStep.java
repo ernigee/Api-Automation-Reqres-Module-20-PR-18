@@ -64,4 +64,9 @@ apiPage.hitDeleteUser();
         apiPage.validationResponseBodyUpdateUser();
 
     }
+
+    @Then("validation response message indicates {string}")
+    public void validationResponseMessageIndicatesOrAnAppropriateErrorMessage(String expectedMessage) {
+    apiPage.validationResponseMessageIndicatesOrAnAppropriateErrorMessage("not Found");
+    }
 }

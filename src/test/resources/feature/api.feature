@@ -34,7 +34,10 @@ Feature: Test Automation Rest Api
         And hit api update data
         Then validation status code is equals 200
         Then validation response body update user
-
-
-
-
+        
+        @api
+        Scenario: Invalid URL for User List
+          Given prepare URL for "Invalid_URL"
+          And hit api get list users
+          Then validation status code is equals 404
+          Then validation response message indicates "Not Found"

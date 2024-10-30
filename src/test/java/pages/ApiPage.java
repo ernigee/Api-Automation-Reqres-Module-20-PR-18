@@ -27,6 +27,8 @@ public class ApiPage {
                break;
            case "DELETE_USER":
                setURL = Endpoint.DELETE_USER;
+           case "Invalid_URL":
+               setURL = Endpoint.Invalid_URL;
            default:
                System.out.println("input right URL");
        }
@@ -113,5 +115,10 @@ public class ApiPage {
 
     public void validationResponseBodyUpdateUser(){
         System.out.println(res.getBody().asString());
+    }
+
+    public void validationResponseMessageIndicatesOrAnAppropriateErrorMessage(String expectedMessage){
+        String actualMessage= res.jsonPath().getString("error");
+        assertThat(actualMessage).isEqualTo(expectedMessage);
     }
 }
