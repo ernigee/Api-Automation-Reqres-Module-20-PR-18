@@ -27,8 +27,13 @@ public class ApiPage {
                break;
            case "DELETE_USER":
                setURL = Endpoint.DELETE_USER;
+               break;
            case "Invalid_URL":
                setURL = Endpoint.Invalid_URL;
+               break;
+           case "UNSUCSESSFUL_REGISTER":
+               setURL = Endpoint.UNSUCSESSFUL_REGISTER;
+               break;
            default:
                System.out.println("input right URL");
        }
@@ -117,8 +122,28 @@ public class ApiPage {
         System.out.println(res.getBody().asString());
     }
 
-    public void validationResponseMessageIndicatesOrAnAppropriateErrorMessage(String expectedMessage){
-        String actualMessage= res.jsonPath().getString("error");
+    public void validationResponseErrorMessage(String expectedMessage){
+        String actualMessage = res.jsonPath().getString("error");
+        System.out.println("Full response body: " + res.getBody().asString());
         assertThat(actualMessage).isEqualTo(expectedMessage);
+
     }
+
+    public void hitApiCreatePostUserNegative(){
+        res = createNewUserNegative(setURL);
+        System.out.println(res.getBody().asString());
+
+    }
+
+    public void validationResponseMessageMissingPassword(String expectedMessage) {
+
+        String actualMessage = res.jsonPath().getString("error");
+        System.out.println("Full response body: " + res.getBody().asString());
+
+        assertThat(actualMessage).isEqualTo(expectedMessage);}
+
+
 }
+
+
+

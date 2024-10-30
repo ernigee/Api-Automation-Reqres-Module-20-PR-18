@@ -15,7 +15,7 @@ public class Utility {
     public static String generateRandomEmail(){
         String allowedChars = "abcdefghijklmnopqrstuvwxyz" + "1234567890" + "_-.";
         String email= "";
-        String temp = RandomStringUtils.randomAlphanumeric(10);  //panjang email 10 karakter
+        String temp = RandomStringUtils.randomAlphanumeric(10); //panjang email 10 karakter
         email = temp + "@testdata.com"; // ini kayanya untuk domainnya
         return email;
     }

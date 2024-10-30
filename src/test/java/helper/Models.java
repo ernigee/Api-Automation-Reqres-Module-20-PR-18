@@ -64,4 +64,17 @@ public class Models {
         return request.body(payload.toString()).when().patch(finalEndpoint);
     }
 
+    public static Response createNewUserNegative(String endpoint){
+
+        String name = "Henry Cavill";
+        String email = "sydney@fife";
+
+        JSONObject payload = new JSONObject();
+        payload.put("name", name);
+        payload.put("email",email);
+
+
+        setupHeaders();
+        return request.body(payload.toString()).when().post(endpoint);
+    }
 }

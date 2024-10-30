@@ -23,7 +23,7 @@ public class Hooks {
     }
 
     @After
-    public void afterTest(){
+    public  void afterTest(){
 
     }
 

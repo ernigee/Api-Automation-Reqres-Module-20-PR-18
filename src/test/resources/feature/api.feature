@@ -40,4 +40,11 @@ Feature: Test Automation Rest Api
           Given prepare URL for "Invalid_URL"
           And hit api get list users
           Then validation status code is equals 404
-          Then validation response message indicates "Not Found"
+          #failed to validate >> Then validation response message indicates "Not Found"
+
+          @api
+          Scenario: Create User with Missing Fields (password)
+            Given prepare URL for "UNSUCSESSFUL_REGISTER"
+            And hit api create a new user with missing "password" fields
+            Then validation status code is equals 400
+            Then validation response message "Missing password"

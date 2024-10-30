@@ -66,7 +66,20 @@ apiPage.hitDeleteUser();
     }
 
     @Then("validation response message indicates {string}")
-    public void validationResponseMessageIndicatesOrAnAppropriateErrorMessage(String expectedMessage) {
-    apiPage.validationResponseMessageIndicatesOrAnAppropriateErrorMessage("not Found");
+    public void validationResponseErrorMessage(String expectedMessage) {
+        apiPage.validationResponseErrorMessage(expectedMessage);
     }
+
+
+    @And("hit api create a new user with missing {string} fields")
+    public void hitApiCreatePostUserNegative(String password) {
+        apiPage.hitApiCreatePostUserNegative();
+    }
+
+    @Then("validation response message {string}")
+    public void validationResponseMessage(String expectedMessage) {
+        apiPage.validationResponseMessageMissingPassword(expectedMessage);
+    }
+
+
 }
